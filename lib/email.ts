@@ -4,8 +4,34 @@ import { BAR } from "@/data/info";
 import type { NuevaReserva } from "./reservas";
 
 const apiKey = process.env.RESEND_API_KEY;
-const FROM = process.env.RESEND_FROM_EMAIL || "Punto y Coma <onboarding@resend.dev>";
 const OWNER = process.env.OWNER_EMAIL;
+
+// Resend exige que el remitente sea de un DOMINIO VERIFICADO. Gmail/Outlook/etc.
+// NO sirven; en ese caso caemos al dominio de pruebas de Resend.
+const FREE_PROVIDERS = /@(gmail|googlemail|outlook|hotmail|live|yahoo|icloud|proton|protonmail|aol)\.[a-z.]+>?$/i;
+function resolveFrom(): string {
+  const raw = process.env.RESEND_FROM_EMAIL?.trim();
+  if (!raw || FREE_PROVIDERS.test(raw)) {
+    if (raw)
+      console.warn(
+        `[email] RESEND_FROM_EMAIL "${raw}" no es un dominio verificable; uso onboarding@resend.dev. ` +
+          `Verifica un dominio en https://resend.com/domains para enviar a cualquier cliente.`,
+      );
+    return "Punto y Coma <onboarding@resend.dev>";
+  }
+  return raw.includes("<") ? raw : `Punto y Coma <${raw}>`;
+}
+const FROM = resolveFrom();
+
+type SendArgs = { to: string; subject: string; html: string };
+async function enviar(resend: Resend, args: SendArgs, etiqueta: string): Promise<void> {
+  try {
+    const { error } = await resend.emails.send({ from: FROM, ...args });
+    if (error) console.error(`[email] Resend rechazó el envío (${etiqueta}):`, error.message ?? error);
+  } catch (e) {
+    console.error(`[email] excepción enviando (${etiqueta}):`, e);
+  }
+}
 
 function fechaLarga(fechaISO: string): string {
   const [y, m, d] = fechaISO.split("-").map(Number);
@@ -58,13 +84,16 @@ export async function notificarReserva(r: NuevaReserva, mesa: string): Promise<v
     }).catch(() => {});
   }
 
-  if (!apiKey) return; // sin Resend configurado, se omite el email
+  if (!apiKey) {
+    console.warn("[email] RESEND_API_KEY no configurada; no se envían emails.");
+    return;
+  }
   const resend = new Resend(apiKey);
 
   // Cliente
-  await resend.emails
-    .send({
-      from: FROM,
+  await enviar(
+    resend,
+    {
       to: r.email,
       subject: `Reserva confirmada en ${BAR.nombre} · ${fechaLarga(r.fecha)}`,
       html: wrap(
@@ -73,14 +102,15 @@ export async function notificarReserva(r: NuevaReserva, mesa: string): Promise<v
          ${detalles(r, mesa)}
          <p style="color:#b6a3c0;font-size:13px;line-height:1.6;margin-top:18px">Si necesitas cambiar o cancelar, llámanos al ${BAR.telefono}. ¡Te esperamos!</p>`,
       ),
-    })
-    .catch(() => {});
+    },
+    "cliente",
+  );
 
   // Dueño
   if (OWNER) {
-    await resend.emails
-      .send({
-        from: FROM,
+    await enviar(
+      resend,
+      {
         to: OWNER,
         subject: `Nueva reserva · ${r.personas}p · ${r.fecha} ${r.hora}`,
         html: wrap(
@@ -92,7 +122,8 @@ export async function notificarReserva(r: NuevaReserva, mesa: string): Promise<v
              ${fila("Email", r.email)}
            </table>`,
         ),
-      })
-      .catch(() => {});
+      },
+      "dueño",
+    );
   }
 }
