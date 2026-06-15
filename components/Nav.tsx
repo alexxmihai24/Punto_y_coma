@@ -25,7 +25,7 @@ export default function Nav() {
     <header
       className="fixed inset-x-0 top-0 z-50 transition-all duration-300"
       style={{
-        background: scrolled ? "rgba(255,250,244,0.85)" : "transparent",
+        background: scrolled ? "var(--nav-bg)" : "transparent",
         backdropFilter: scrolled ? "blur(14px)" : "none",
         borderBottom: scrolled ? "1px solid var(--line)" : "1px solid transparent",
       }}

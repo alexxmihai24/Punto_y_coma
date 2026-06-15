@@ -28,7 +28,7 @@ function fechaLarga(): string {
 export default async function CartaPage() {
   const menu = await getMenuDelDia();
   return (
-    <>
+    <div className="tema-carta min-h-dvh">
       <Nav />
       <main className="pt-28">
         <header className="container-px pb-4">
@@ -60,6 +60,6 @@ export default async function CartaPage() {
         </section>
       </main>
       <Footer />
-    </>
+    </div>
   );
 }

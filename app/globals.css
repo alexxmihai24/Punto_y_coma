@@ -30,6 +30,38 @@
 
   --radius: 18px;
   --shadow-glow: 0 1px 0 rgba(255, 255, 255, 0.6) inset, 0 24px 60px -26px rgba(218, 31, 140, 0.45);
+  --nav-bg: rgba(255, 250, 244, 0.85);
+}
+
+/* ============================================================
+   Tema OSCURO de la carta impresa (solo en /carta).
+   Colores tomados de las fotos en /public/carta-original:
+   fondo plomo-violáceo + neón magenta → violeta → azul.
+   Reescribe los tokens dentro de su ámbito, así todos los
+   componentes hijos (Nav, secciones, footer) se re-tematizan.
+   ============================================================ */
+.tema-carta {
+  --ink: #150a1b;
+  --ink-2: #211031;
+  --ink-3: #2c1740;
+  --cream: #f7eef5;
+  --muted: #c6b2d2;
+  --faint: #9785a6;
+  --magenta: #ff2d8e;
+  --violet: #9a6cff;
+  --orange: #ff5ea0; /* en la carta el acento cálido pasa a rosa neón */
+  --amber: #ff9ec9;
+  --line: rgba(255, 255, 255, 0.1);
+  --line-strong: rgba(255, 255, 255, 0.18);
+  --grad: linear-gradient(115deg, #ff2d8e 0%, #9a6cff 55%, #3aa0ff 100%);
+  --nav-bg: rgba(21, 10, 27, 0.82);
+  --shadow-glow: 0 0 0 1px rgba(255, 45, 142, 0.18), 0 24px 60px -22px rgba(255, 45, 142, 0.5);
+  color: var(--cream);
+  background-color: var(--ink);
+  background-image:
+    radial-gradient(40rem 30rem at 10% -5%, rgba(255, 45, 142, 0.22), transparent 60%),
+    radial-gradient(38rem 34rem at 100% 0%, rgba(154, 108, 255, 0.2), transparent 58%),
+    radial-gradient(44rem 44rem at 75% 112%, rgba(58, 160, 255, 0.14), transparent 60%);
 }
 
 @theme inline {

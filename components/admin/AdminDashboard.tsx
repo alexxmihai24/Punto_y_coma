@@ -47,6 +47,9 @@ export default function AdminDashboard(props: {
           </div>
         </div>
         <div className="flex items-center gap-3">
+          <Link href="/qr" target="_blank" className="text-sm text-muted hover:text-cream">
+            Código QR
+          </Link>
           <Link href="/" className="text-sm text-muted hover:text-cream">
             Ver web ↗
           </Link>
