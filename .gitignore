@@ -36,6 +36,11 @@ yarn-error.log*
 # vercel
 .vercel
 
+# dev artifacts
+/screenshots
+/public/instagram/_*.json
+/public/instagram/_*.txt
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts

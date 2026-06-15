@@ -25,7 +25,7 @@ export default function LoginForm() {
           name="password"
           autoFocus
           required
-          className="w-full rounded-2xl border border-[var(--line-strong)] bg-white/[0.04] px-4 py-3 text-cream outline-none transition focus:border-magenta"
+          className="w-full rounded-2xl border border-[var(--line-strong)] bg-black/[0.03] px-4 py-3 text-cream outline-none transition focus:border-magenta"
           style={{ boxShadow: "none" }}
         />
       </label>

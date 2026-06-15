@@ -14,7 +14,7 @@ function fechaTitulo(iso: string): string {
 const ESTADO_STYLE: Record<string, string> = {
   pendiente: "border-amber/40 text-amber",
   confirmada: "border-emerald-400/40 text-emerald-300",
-  cancelada: "border-white/15 text-faint line-through",
+  cancelada: "border-[var(--line-strong)] text-faint line-through",
 };
 
 export default function AgendaReservas({ reservas }: { reservas: ReservaAdmin[] }) {

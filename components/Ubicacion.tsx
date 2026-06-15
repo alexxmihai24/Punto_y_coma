@@ -65,7 +65,7 @@ export default function Ubicacion() {
 function Fila({ icon, titulo, children }: { icon: React.ReactNode; titulo: string; children: React.ReactNode }) {
   return (
     <div className="flex gap-4">
-      <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl border border-[var(--line)] bg-white/[0.03]">
+      <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl border border-[var(--line)] bg-black/[0.03]">
         {icon}
       </span>
       <div>

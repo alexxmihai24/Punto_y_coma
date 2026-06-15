@@ -68,7 +68,7 @@ export default function HorariosConfig({ config }: { config: Config }) {
         {DIAS.map((d) => {
           const franjas = horarios[d.key] ?? [];
           return (
-            <div key={d.key} className="rounded-2xl border border-[var(--line)] bg-white/[0.02] p-4">
+            <div key={d.key} className="rounded-2xl border border-[var(--line)] bg-black/[0.02] p-4">
               <div className="mb-2 flex items-center justify-between">
                 <span className="font-semibold text-cream">{d.label}</span>
                 <button onClick={() => addFranja(d.key)} type="button" className="text-sm font-semibold text-magenta hover:underline">
@@ -80,7 +80,7 @@ export default function HorariosConfig({ config }: { config: Config }) {
               ) : (
                 <div className="flex flex-wrap gap-2">
                   {franjas.map((f, i) => (
-                    <div key={i} className="flex items-center gap-1.5 rounded-xl border border-[var(--line)] bg-white/[0.03] px-2 py-1.5">
+                    <div key={i} className="flex items-center gap-1.5 rounded-xl border border-[var(--line)] bg-black/[0.03] px-2 py-1.5">
                       <input type="time" value={f.inicio} onChange={(e) => setFranja(d.key, i, "inicio", e.target.value)} className="ainput !w-[7.5rem] !py-1" />
                       <span className="text-faint">–</span>
                       <input type="time" value={f.fin} onChange={(e) => setFranja(d.key, i, "fin", e.target.value)} className="ainput !w-[7.5rem] !py-1" />

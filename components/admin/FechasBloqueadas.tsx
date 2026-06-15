@@ -30,7 +30,7 @@ export default function FechasBloqueadas({ fechas }: { fechas: BlockedDate[] }) 
       {fechas.length > 0 && (
         <div className="mt-5 flex flex-wrap gap-2">
           {fechas.map((b) => (
-            <div key={b.id} className="flex items-center gap-2 rounded-full border border-[var(--line-strong)] bg-white/[0.03] py-1.5 pl-4 pr-2 text-sm">
+            <div key={b.id} className="flex items-center gap-2 rounded-full border border-[var(--line-strong)] bg-black/[0.03] py-1.5 pl-4 pr-2 text-sm">
               <span className="text-cream">{bonita(b.fecha)}</span>
               {b.motivo && <span className="text-faint">· {b.motivo}</span>}
               <button onClick={() => run(() => desbloquearFecha(b.id))} disabled={pending} className="grid h-6 w-6 place-items-center rounded-full text-muted hover:text-magenta disabled:opacity-50" aria-label="Quitar bloqueo">

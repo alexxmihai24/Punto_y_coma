@@ -36,7 +36,7 @@ export default function MenuDelDia({ menu, fecha }: { menu: Menu | null; fecha: 
       <Reveal delay={120} className="mx-auto mt-12 max-w-3xl">
         {menu ? (
           <article className="glass relative overflow-hidden rounded-3xl p-7 sm:p-10" style={{ boxShadow: "var(--shadow-glow)" }}>
-            <span aria-hidden className="pointer-events-none absolute -right-6 -top-10 select-none font-[family-name:var(--font-display)] text-[10rem] leading-none text-white/[0.04]">;</span>
+            <span aria-hidden className="pointer-events-none absolute -right-4 -top-10 select-none font-[family-name:var(--font-display)] text-[10rem] leading-none text-grad opacity-10">;</span>
 
             <div className="grid gap-8 sm:grid-cols-2">
               <Columna titulo="Primeros" items={menu.primeros} />

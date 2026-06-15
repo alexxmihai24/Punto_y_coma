@@ -25,7 +25,7 @@ export default function MesasConfig({ mesas }: { mesas: MesaAdmin[] }) {
 
       <div className="grid gap-2 sm:grid-cols-2">
         {mesas.map((m) => (
-          <div key={m.id} className="flex items-center justify-between gap-3 rounded-2xl border border-[var(--line)] bg-white/[0.02] px-4 py-3">
+          <div key={m.id} className="flex items-center justify-between gap-3 rounded-2xl border border-[var(--line)] bg-black/[0.02] px-4 py-3">
             <div>
               <span className="font-semibold text-cream">{m.nombre}</span>
               <span className="ml-2 text-sm text-muted">{m.capacidad} plazas</span>

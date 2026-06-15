@@ -3,6 +3,7 @@ import Nav from "@/components/Nav";
 import Hero from "@/components/Hero";
 import MenuDelDia from "@/components/MenuDelDia";
 import CartaTeaser from "@/components/CartaTeaser";
+import Galeria from "@/components/Galeria";
 import Ubicacion from "@/components/Ubicacion";
 import Footer from "@/components/Footer";
 import Reveal from "@/components/Reveal";
@@ -30,6 +31,7 @@ export default async function Home() {
         <Hero />
         <MenuDelDia menu={menu} fecha={fechaLarga()} />
         <CartaTeaser />
+        <Galeria />
 
         {/* Banda CTA de reservas */}
         <section className="container-px py-10">
@@ -47,7 +49,7 @@ export default async function Home() {
               </p>
               <Link
                 href="/reservar"
-                className="btn relative mt-7 bg-white !px-7 text-[var(--ink)] hover:-translate-y-0.5"
+                className="btn relative mt-7 bg-white !px-7 font-bold text-magenta hover:-translate-y-0.5"
               >
                 Reservar ahora
               </Link>

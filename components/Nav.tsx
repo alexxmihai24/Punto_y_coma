@@ -25,7 +25,7 @@ export default function Nav() {
     <header
       className="fixed inset-x-0 top-0 z-50 transition-all duration-300"
       style={{
-        background: scrolled ? "rgba(13,7,15,0.72)" : "transparent",
+        background: scrolled ? "rgba(255,250,244,0.85)" : "transparent",
         backdropFilter: scrolled ? "blur(14px)" : "none",
         borderBottom: scrolled ? "1px solid var(--line)" : "1px solid transparent",
       }}
@@ -79,7 +79,7 @@ export default function Nav() {
                 key={l.href}
                 href={l.href}
                 onClick={() => setOpen(false)}
-                className="rounded-xl px-4 py-3 text-base font-medium text-cream hover:bg-white/5"
+                className="rounded-xl px-4 py-3 text-base font-medium text-cream hover:bg-black/5"
               >
                 {l.label}
               </Link>

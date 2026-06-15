@@ -3,7 +3,7 @@ import Reveal from "./Reveal";
 
 function PrecioChip({ label, value }: { label: string; value: number }) {
   return (
-    <span className="inline-flex flex-col items-end rounded-lg border border-[var(--line)] bg-white/[0.03] px-2.5 py-1 leading-tight">
+    <span className="inline-flex flex-col items-end rounded-lg border border-[var(--line)] bg-black/[0.03] px-2.5 py-1 leading-tight">
       <span className="text-[0.58rem] font-semibold uppercase tracking-wider text-faint">{label}</span>
       <span className="font-[family-name:var(--font-display)] text-sm font-bold text-cream">
         {euros(value)}
@@ -32,7 +32,7 @@ function ItemRow({ it }: { it: ItemLista }) {
   return (
     <li className="flex items-baseline gap-3 py-3">
       {it.num && (
-        <span className="mt-0.5 grid min-w-[2.4rem] shrink-0 place-items-center rounded-md border border-[var(--line)] bg-white/[0.03] px-2 py-1 text-center font-[family-name:var(--font-display)] text-[0.7rem] font-bold text-magenta">
+        <span className="mt-0.5 grid min-w-[2.4rem] shrink-0 place-items-center rounded-md border border-[var(--line)] bg-black/[0.03] px-2 py-1 text-center font-[family-name:var(--font-display)] text-[0.7rem] font-bold text-magenta">
           {it.num}
         </span>
       )}
@@ -68,7 +68,7 @@ function Seccion({ seccion, index }: { seccion: SeccionCarta; index: number }) {
       </ul>
 
       {seccion.nota && (
-        <p className="mt-4 rounded-xl border border-[var(--line)] bg-white/[0.02] px-4 py-3 text-sm italic text-muted">
+        <p className="mt-4 rounded-xl border border-[var(--line)] bg-black/[0.02] px-4 py-3 text-sm italic text-muted">
           {seccion.nota}
         </p>
       )}

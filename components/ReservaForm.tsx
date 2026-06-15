@@ -211,10 +211,10 @@ export default function ReservaForm() {
       {error && !hora && <p className="mt-4 text-sm font-medium text-magenta">{error}</p>}
 
       <style>{`
-        .input{width:100%;background:rgba(255,255,255,0.04);border:1px solid var(--line-strong);border-radius:14px;padding:0.8rem 1rem;color:var(--cream);font-size:0.98rem;font-family:var(--font-body),sans-serif;outline:none;transition:border-color .2s, box-shadow .2s}
-        .input:focus{border-color:var(--magenta);box-shadow:0 0 0 3px rgba(255,45,142,0.18)}
+        .input{width:100%;background:var(--ink-2);border:1px solid var(--line-strong);border-radius:14px;padding:0.8rem 1rem;color:var(--cream);font-size:0.98rem;font-family:var(--font-body),sans-serif;outline:none;transition:border-color .2s, box-shadow .2s}
+        .input:focus{border-color:var(--magenta);box-shadow:0 0 0 3px rgba(218,31,140,0.18)}
         .input::placeholder{color:var(--faint)}
-        .input[type=date]{color-scheme:dark}
+        .input[type=date]{color-scheme:light}
       `}</style>
     </form>
   );
@@ -231,16 +231,16 @@ function Campo({ label, children, full }: { label: string; children: React.React
 
 function Stepper({ value, onChange, min, max }: { value: number; onChange: (n: number) => void; min: number; max: number }) {
   return (
-    <div className="flex items-center gap-1 rounded-14 border border-[var(--line-strong)] bg-white/[0.04] p-1" style={{ borderRadius: 14 }}>
-      <button type="button" onClick={() => onChange(Math.max(min, value - 1))} className="grid h-9 w-9 place-items-center rounded-lg text-xl text-cream hover:bg-white/10" aria-label="Menos">−</button>
+    <div className="flex items-center gap-1 rounded-14 border border-[var(--line-strong)] bg-black/[0.03] p-1" style={{ borderRadius: 14 }}>
+      <button type="button" onClick={() => onChange(Math.max(min, value - 1))} className="grid h-9 w-9 place-items-center rounded-lg text-xl text-cream hover:bg-black/[0.06]" aria-label="Menos">−</button>
       <span className="w-10 text-center font-[family-name:var(--font-display)] text-lg font-bold">{value}</span>
-      <button type="button" onClick={() => onChange(Math.min(max, value + 1))} className="grid h-9 w-9 place-items-center rounded-lg text-xl text-cream hover:bg-white/10" aria-label="Más">+</button>
+      <button type="button" onClick={() => onChange(Math.min(max, value + 1))} className="grid h-9 w-9 place-items-center rounded-lg text-xl text-cream hover:bg-black/[0.06]" aria-label="Más">+</button>
     </div>
   );
 }
 
 function Aviso({ children }: { children: React.ReactNode }) {
-  return <div className="rounded-2xl border border-[var(--line)] bg-white/[0.02] px-5 py-4 text-sm leading-relaxed text-muted">{children}</div>;
+  return <div className="rounded-2xl border border-[var(--line)] bg-black/[0.02] px-5 py-4 text-sm leading-relaxed text-muted">{children}</div>;
 }
 
 function SlotsView({ slots, value, onPick }: { slots: Slot[]; value: string | null; onPick: (t: string) => void }) {
@@ -267,7 +267,7 @@ function SlotsView({ slots, value, onPick }: { slots: Slot[]; value: string | nu
                     style={
                       active
                         ? { background: "var(--grad)", color: "#fff", borderColor: "transparent" }
-                        : { background: "rgba(255,255,255,0.04)", borderColor: "var(--line-strong)", color: "var(--cream)" }
+                        : { background: "var(--ink-2)", borderColor: "var(--line-strong)", color: "var(--cream)" }
                     }
                   >
                     {s.time}
