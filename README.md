@@ -1,10 +1,20 @@
 # Punto y Coma — Carta digital, landing y reservas
 
-Web del bar **Punto y Coma** (Montilla): landing + carta digital con QR, menú del día editable
-por el dueño y reservas online con gestión de mesas y confirmación por email.
+> Web para un bar de tapas real de Montilla (Córdoba): carta digital con QR, menú del día que edita el dueño y reservas online con asignación automática de mesa.
 
-Stack: **Next.js 16 (App Router) + TypeScript + Tailwind v4**, **Supabase** (Postgres), **Resend**
-(emails) y `qrcode`. Pensado para desplegar en **Vercel**.
+**🔗 Demo:** https://punto-y-coma.vercel.app
+
+**Stack:** Next.js 16 (App Router) · TypeScript · Tailwind v4 · Supabase (PostgreSQL) · Resend · Vercel
+
+## Lo más interesante
+
+- **Reservas sin overbooking, incluso con peticiones simultáneas.** Una RPC transaccional asigna la mesa más ajustada al grupo y una restricción `EXCLUDE` de PostgreSQL impide que dos reservas se solapen en la misma mesa.
+- **El dueño no depende del programador.** Desde `/admin` cambia el menú del día, consulta la agenda y define mesas, horarios y días cerrados.
+- **Avisos automáticos.** Email de confirmación con Resend y un webhook preparado para enviar WhatsApp con n8n.
+- **Funciona sin base de datos** en modo demo, para enseñarla o desarrollar sin configurar nada.
+- **Dos identidades visuales:** la landing con los colores del bar y la carta en oscuro, como la carta impresa.
+
+---
 
 ## Rutas
 
